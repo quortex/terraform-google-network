@@ -15,7 +15,7 @@ Get all our terraform modules on [Terraform Registry][registry_tf_modules] or on
 
 This project is part of our terraform modules to provision a Quortex infrastructure for Google Cloud Platform.
 
-[![Quortex][infra_gcp]](https://quortex.io)
+![infra_gcp]
 
 Check out these related projects.
 
