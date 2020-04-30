@@ -8,7 +8,27 @@ This module is available on [Terraform Registry][registry_tf_google_network].
 
 Get all our terraform modules on [Terraform Registry][registry_tf_modules] or on [Github][github_tf_modules] !
 
+## Created resources
 
+This module creates the following resources in GCP:
+
+- a dedicated VPC
+- a subnet with dedicated ranges for VPC native cluster pods and services
+- firewall rules to apply on VPC
+- a router with NAT and some external ip addresses for VPC outbound traffic
+
+
+## Usage example
+
+```hcl
+module "network" {
+  source = "quortex/network/google"
+
+  # required variables
+  project_id = "project_id"
+  region     = "region"
+}
+```
 ---
 
 ## Related Projects
@@ -34,7 +54,7 @@ File a GitHub [issue](https://github.com/quortex/terraform-google-network/issues
 
   [logo]: https://storage.googleapis.com/quortex-assets/logo.webp
   [email]: mailto:info@quortex.io
-  [infra_gcp]: https://storage.googleapis.com/quortex-assets/infra_gcp_001.jpg
+  [infra_gcp]: https://storage.googleapis.com/quortex-assets/infra_gcp_002.jpg
   [registry_tf_modules]: https://registry.terraform.io/modules/quortex
   [registry_tf_google_network]: https://registry.terraform.io/modules/quortex/network/google
   [registry_tf_google_gke_cluster]: https://registry.terraform.io/modules/quortex/gke-cluster/google
