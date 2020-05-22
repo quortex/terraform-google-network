@@ -17,7 +17,7 @@
 # A list of IP for NAT.
 resource "google_compute_address" "nat" {
   count  = var.nat_addresses_count
-  name   = "${length(var.nat_addresses_name_prefix) > 0 ? var.nat_addresses_name_prefix : format("${var.name}%s", "-nat-ip")}-${count.index}"
+  name   = "${length(var.nat_addresses_name_prefix) > 0 ? var.nat_addresses_name_prefix : "${var.name}-nat-ip"}-${count.index}"
   region = var.region
 }
 
