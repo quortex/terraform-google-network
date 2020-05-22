@@ -16,7 +16,7 @@
 
 # The quortex VPC network.
 resource "google_compute_network" "quortex" {
-  name = var.network_name
+  name = length(var.network_name) > 0 ? var.network_name : var.name
 
   # An optional description of this resource.
   # The resource must be recreated to modify this field.
@@ -32,7 +32,7 @@ resource "google_compute_network" "quortex" {
 
 # The subnetwork in wich to deploy the Quortex resources.
 resource "google_compute_subnetwork" "quortex" {
-  name = var.subnet_name
+  name = length(var.subnet_name) > 0 ? var.subnet_name : var.name
 
   # An optional description of this resource.
   # Provide this property when you create the resource.
@@ -50,7 +50,7 @@ resource "google_compute_subnetwork" "quortex" {
     # The name associated with the subnetwork secondary range used for cluster pods.
     # The name must be 1-63 characters long, and comply with RFC1035.
     # The name must be unique within the subnetwork.
-    range_name = var.pod_range_name
+    range_name = length(var.pod_range_name) > 0 ? var.pod_range_name : "${var.name}-pod"
 
     # The range of IP addresses belonging to the subnetwork secondary range used for cluster pods.
     # Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network.
@@ -63,7 +63,7 @@ resource "google_compute_subnetwork" "quortex" {
     # The name associated with the subnetwork secondary range used for cluster services.
     # The name must be 1-63 characters long, and comply with RFC1035.
     # The name must be unique within the subnetwork.
-    range_name = var.svc_range_name
+    range_name = length(var.svc_range_name) > 0 ? var.svc_range_name : "${var.name}-svc"
 
     # The range of IP addresses belonging to the subnetwork secondary range used for cluster services.
     # Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network.

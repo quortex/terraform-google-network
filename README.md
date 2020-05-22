@@ -27,6 +27,7 @@ module "network" {
   # required variables
   project_id = "project_id"
   region     = "region"
+  name       = "quortex"
 }
 ```
 ---
