@@ -17,13 +17,13 @@
 # A list of IP for NAT.
 resource "google_compute_address" "nat" {
   count  = var.nat_addresses_count
-  name   = "${var.nat_addresses_name_prefix}-${count.index}"
+  name   = "${length(var.nat_addresses_name_prefix) > 0 ? var.nat_addresses_name_prefix : "${var.name}-nat-ip"}-${count.index}"
   region = var.region
 }
 
 # The Quortex router.
 resource "google_compute_router" "quortex" {
-  name    = google_compute_network.quortex.name
+  name    = length(var.router_name) > 0 ? var.router_name : var.name
   network = google_compute_network.quortex.self_link
 
   # An optional description of the router.
@@ -32,7 +32,7 @@ resource "google_compute_router" "quortex" {
 
 # A NAT service created in Quortex router.
 resource "google_compute_router_nat" "quortex" {
-  name = google_compute_router.quortex.name
+  name = length(var.router_nat_name) > 0 ? var.router_nat_name : var.name
 
   # The name of the Cloud Router in which this NAT will be configured.
   router = google_compute_router.quortex.name

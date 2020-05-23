@@ -24,10 +24,15 @@ variable "region" {
   description = "The region in wich to create network regional resources (subnet, router, nat...)."
 }
 
+variable "name" {
+  type        = string
+  description = "A name from which the name of the resources will be chosen. Note that each resource name can be set individually."
+}
+
 variable "network_name" {
   type        = string
   description = "The name of the network (must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?)."
-  default     = "quortex"
+  default     = ""
 }
 
 variable "network_description" {
@@ -45,7 +50,7 @@ variable "network_routing_mode" {
 variable "subnet_name" {
   type        = string
   description = "The name of the subnet (must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?)."
-  default     = "quortex"
+  default     = ""
 }
 
 variable "subnet_description" {
@@ -69,7 +74,7 @@ variable "master_cidr_block" {
 variable "pod_range_name" {
   type        = string
   description = "The name associated with the subnetwork secondary range for cluster pods usage. (must be unique within the subnetwork, 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?)"
-  default     = "quortex-pod"
+  default     = ""
 }
 
 variable "pod_ip_cidr_range" {
@@ -81,7 +86,7 @@ variable "pod_ip_cidr_range" {
 variable "svc_range_name" {
   type        = string
   description = "The name associated with the subnetwork secondary range for cluster services usage. (must be unique within the subnetwork, 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?)"
-  default     = "quortex-svc"
+  default     = ""
 }
 
 variable "svc_ip_cidr_range" {
@@ -90,9 +95,21 @@ variable "svc_ip_cidr_range" {
   default     = "10.0.48.0/20"
 }
 
+variable "router_name" {
+  type        = string
+  description = "The name of the router (must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?)."
+  default     = ""
+}
+
 variable "router_description" {
   type        = string
   description = "An optional description of the router."
+  default     = ""
+}
+
+variable "router_nat_name" {
+  type        = string
+  description = "The name of the router nat (must be 1-63 characters long and comply with RFC1035)."
   default     = ""
 }
 
