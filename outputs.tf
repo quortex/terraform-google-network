@@ -40,11 +40,11 @@ output "subnetwork" {
 }
 
 output "pod_range_name" {
-  value       = var.pod_range_name
+  value       = local.pod_range_name
   description = "The name of the existing secondary range in the cluster's subnetwork to use for pod IP addresses."
 }
 
 output "svc_range_name" {
-  value       = var.svc_range_name
+  value       = local.svc_range_name
   description = "The name of the existing secondary range in the cluster's subnetwork to use for service ClusterIPs."
 }
