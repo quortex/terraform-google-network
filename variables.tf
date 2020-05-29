@@ -116,7 +116,7 @@ variable "router_nat_name" {
 variable "nat_addresses_name_prefix" {
   type        = string
   description = "A prefix for compute addresses name used for NAT. Compute addresses names will be computde from this prefix and a counter for each address. Each compute address name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?"
-  default     = "quortex-nat-ip"
+  default     = ""
 }
 
 variable "nat_addresses_count" {
