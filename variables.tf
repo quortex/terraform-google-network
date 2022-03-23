@@ -143,7 +143,7 @@ variable "firewall_allowed_from_master" {
 }
 
 variable "ssh_whitelisted_ips" {
-  type        = list(string)
+  type        = set(string)
   description = "A list of IP ranges to whitelist for ssh access on the cluster."
   default     = []
 }
