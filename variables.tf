@@ -141,3 +141,9 @@ variable "firewall_allowed_from_master" {
   description = "The list of protocols / ports to allow traffic from master in the VPC."
   default     = []
 }
+
+variable "ssh_whitelisted_ips" {
+  type        = list(string)
+  description = "A list of IP ranges to whitelist for ssh access on the cluster."
+  default     = []
+}

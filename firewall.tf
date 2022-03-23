@@ -51,6 +51,7 @@ resource "google_compute_firewall" "ssh" {
     protocol = "tcp"
     ports    = [22]
   }
+  source_ranges = var.ssh_whitelisted_ips
 }
 
 resource "google_compute_firewall" "health_checks" {
